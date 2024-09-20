@@ -20,21 +20,16 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.6s ease-in-out;
 }
 
-.section.visible {
-    opacity: 1;
-}
-
-/* Fix for Hero Section visibility */
+/* Hero Section */
 #hero {
     height: 100vh;
     background-color: #2980b9;
     color: #fff;
     text-align: center;
-    padding-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,12 +37,12 @@ body {
 }
 
 #hero h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 #hero p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .cta {
@@ -93,6 +88,11 @@ body {
     transition: color 0.3s;
 }
 
+#main-nav ul li a.active {
+    color: #2980b9;
+    font-weight: bold;
+}
+
 #main-nav ul li a:hover {
     color: #2980b9;
 }
@@ -107,23 +107,19 @@ body {
     text-align: center;
 }
 
-/* Grid Layouts */
-.experience-grid,
-.skills-grid,
-.awards-grid,
-.education-grid {
+/* Experience Grid */
+.experience-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
 }
 
-/* Experience Section */
 .experience-card {
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -132,17 +128,22 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.experience-icon {
-    font-size: 2rem;
-    color: #3498db;
-    margin-bottom: 10px;
+.experience-card.expanded {
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
 }
 
 .details {
+    display: none;
     margin-top: 1rem;
     list-style-type: disc;
     padding-left: 20px;
     text-align: left;
+}
+
+.experience-icon {
+    font-size: 2rem;
+    color: #3498db;
+    margin-bottom: 10px;
 }
 
 /* Skills Section */
@@ -183,6 +184,28 @@ body {
     color: #3498db;
 }
 
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.contact-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-card i {
+    font-size: 2rem;
+    color: #2980b9;
+    margin-bottom: 10px;
+}
+
 /* Footer */
 footer {
     background-color: #2c3e50;
@@ -192,15 +215,37 @@ footer {
     margin-top: 2rem;
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .experience-grid,
     .skills-grid,
     .awards-grid,
-    .education-grid {
+    .education-grid,
+    .contact-grid {
         grid-template-columns: 1fr;
     }
 
     .card {
         width: 90%;
+    }
+
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+    }
+
+    .cta {
+        font-size: 1rem;
+    }
+
+    #main-nav ul {
+        padding: 0 20px;
+    }
+
+    #main-nav ul li {
+        margin: 0.75rem 0.75rem;
     }
 }
