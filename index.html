@@ -32,7 +32,7 @@
     </nav>
 
     <!-- About Section -->
-    <section id="about" class="section fade-in">
+    <section id="about" class="section fade-in visible">
         <div class="card">
             <h2>About Me</h2>
             <p>Enthusiastic and results-oriented Technical Support Professional with 5 years of experience in supporting Informatica products. Skilled in troubleshooting, debugging product issues, and resolving critical escalations. Strong communication and interpersonal skills. Passionate about solving problems, reading, and exploring physics and the cosmos.</p>
@@ -40,10 +40,10 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section fade-in">
+    <section id="experience" class="section fade-in visible">
         <h2>Professional Experience</h2>
         <div class="experience-grid">
-            <div class="experience-card">
+            <div class="experience-card" onclick="toggleExperience(this)">
                 <i class="fas fa-briefcase experience-icon"></i>
                 <h3>Product Specialist, Informatica</h3>
                 <p class="duration">Apr 2023 - Present | Bengaluru, India</p>
@@ -55,7 +55,7 @@
                 </ul>
             </div>
 
-            <div class="experience-card">
+            <div class="experience-card" onclick="toggleExperience(this)">
                 <i class="fas fa-briefcase experience-icon"></i>
                 <h3>Associate Product Specialist, Informatica</h3>
                 <p class="duration">Nov 2021 - Mar 2023 | Bengaluru, India</p>
@@ -66,7 +66,7 @@
                 </ul>
             </div>
 
-            <div class="experience-card">
+            <div class="experience-card" onclick="toggleExperience(this)">
                 <i class="fas fa-briefcase experience-icon"></i>
                 <h3>Associate Software Engineer, Informatica</h3>
                 <p class="duration">Sep 2020 - Oct 2021 | Bengaluru, India</p>
@@ -76,7 +76,7 @@
                 </ul>
             </div>
 
-            <div class="experience-card">
+            <div class="experience-card" onclick="toggleExperience(this)">
                 <i class="fas fa-briefcase experience-icon"></i>
                 <h3>GCS Intern, Informatica</h3>
                 <p class="duration">Aug 2019 - Aug 2020 | Bengaluru, India</p>
@@ -89,7 +89,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section fade-in">
+    <section id="skills" class="section fade-in visible">
         <h2>Skills</h2>
         <div class="skills-grid">
             <div class="skill-item">Java</div>
@@ -104,7 +104,7 @@
     </section>
 
     <!-- Awards Section -->
-    <section id="awards" class="section fade-in">
+    <section id="awards" class="section fade-in visible">
         <h2>Awards</h2>
         <div class="awards-grid">
             <div class="award-card">
@@ -128,7 +128,7 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="section fade-in">
+    <section id="education" class="section fade-in visible">
         <h2>Education</h2>
         <div class="education-grid">
             <div class="education-card">
@@ -146,7 +146,7 @@
     </section>
 
     <!-- Interests Section -->
-    <section id="interests" class="section fade-in">
+    <section id="interests" class="section fade-in visible">
         <div class="card">
             <h2>Interests</h2>
             <p>I am passionate about reading books, exploring mythology, playing the guitar, and diving deep into physics and the cosmos. I also enjoy self-improvement activities, including maintaining healthy habits. Recently, I have been working on my fitness and managing hair care with Redensyl for hair thinning and loss.</p>
@@ -154,12 +154,32 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section fade-in">
-        <div class="card">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:mohitagarwal9542@gmail.com">mohitagarwal9542@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/mohitagarwal9542/" target="_blank">linkedin.com/in/mohitagarwal9542</a></p>
-            <p>GitHub: <a href="https://github.com/mojito9542" target="_blank">github.com/mojito9542</a></p>
+    <section id="contact" class="section fade-in visible">
+        <h2>Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:mohitagarwal9542@gmail.com">mohitagarwal9542@gmail.com</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/mohitagarwal9542/" target="_blank">linkedin.com/in/mohitagarwal9542</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/mojito9542" target="_blank">github.com/mojito9542</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-globe"></i>
+                <h3>Portfolio</h3>
+                <p><a href="https://mojito9542.github.io" target="_blank">mojito9542.github.io</a></p>
+            </div>
         </div>
     </section>
 
@@ -170,7 +190,7 @@
         </div>
     </footer>
 
-    <!-- Smooth Scrolling and Fade-in/Fade-out Animation -->
+    <!-- Smooth Scrolling, Navigation Highlight, and Collapsible Sections -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -181,19 +201,43 @@
             });
         });
 
-        // Fade-in and Fade-out animation for sections
+        // Navigation highlighting
+        const navLinks = document.querySelectorAll('#main-nav ul li a');
         const sections = document.querySelectorAll('.section');
-        window.addEventListener('scroll', checkSectionVisibility);
 
-        function checkSectionVisibility() {
+        window.addEventListener('scroll', () => {
+            let current = '';
             sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= window.innerHeight * 0.25) {
-                    section.classList.add('visible');
-                } else {
-                    section.classList.remove('visible');
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 50) {
+                    current = section.getAttribute('id');
                 }
             });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Collapsible Experience Sections
+        function toggleExperience(element) {
+            const details = element.querySelector('.details');
+            const isVisible = details.style.display === 'block';
+            
+            // Collapse all first
+            document.querySelectorAll('.experience-card .details').forEach(detail => {
+                detail.style.display = 'none';
+                detail.parentElement.classList.remove('expanded');
+            });
+
+            // Expand the clicked one if not already visible
+            if (!isVisible) {
+                details.style.display = 'block';
+                element.classList.add('expanded');
+            }
         }
 
         window.onload = function() {
