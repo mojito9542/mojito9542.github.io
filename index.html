@@ -20,15 +20,17 @@
 
     <!-- Navigation -->
     <nav id="main-nav">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#awards">Awards</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-wrapper">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- About Section -->
@@ -92,14 +94,33 @@
     <section id="skills" class="section fade-in visible">
         <h2>Skills</h2>
         <div class="skills-grid">
-            <div class="skill-item">Java</div>
-            <div class="skill-item">Python</div>
-            <div class="skill-item">SQL, Redshift, S3</div>
-            <div class="skill-item">SSO, LDAP, REST API</div>
-            <div class="skill-item">Wireshark, Procmon, Debug Diag</div>
-            <div class="skill-item">Linux/Unix, Windows</div>
-            <div class="skill-item">TCP/IP, DNS, SSL</div>
-            <div class="skill-item">Shell Scripting, Groovy, Bash</div>
+            <div class="skill-card" onclick="toggleSkills(this)">
+                <div class="skill-item">Java</div>
+                <ul class="details">
+                    <li>Expertise in developing applications and services.</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" onclick="toggleSkills(this)">
+                <div class="skill-item">Python</div>
+                <ul class="details">
+                    <li>Experience in scripting and automation using Python.</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" onclick="toggleSkills(this)">
+                <div class="skill-item">SQL, Redshift, S3</div>
+                <ul class="details">
+                    <li>Proficiency in databases, data storage, and querying.</li>
+                </ul>
+            </div>
+
+            <div class="skill-card" onclick="toggleSkills(this)">
+                <div class="skill-item">SSO, LDAP, REST API</div>
+                <ul class="details">
+                    <li>Handling authentication, user management, and APIs.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -107,19 +128,19 @@
     <section id="awards" class="section fade-in visible">
         <h2>Awards</h2>
         <div class="awards-grid">
-            <div class="award-card">
+            <div class="award-card" style="padding: 2rem;">
                 <i class="fas fa-award award-icon"></i>
                 <h3>Think Customer First</h3>
                 <p>For handling critical customer escalation accounts, unblocking customers, and handling POC's issues.</p>
             </div>
 
-            <div class="award-card">
+            <div class="award-card" style="padding: 2rem;">
                 <i class="fas fa-hands-helping award-icon"></i>
                 <h3>Do Good</h3>
                 <p>For preparing the self-enablement technical contents for new joiners in the team.</p>
             </div>
 
-            <div class="award-card">
+            <div class="award-card" style="padding: 2rem;">
                 <i class="fas fa-lightbulb award-icon"></i>
                 <h3>Aspire and Innovate</h3>
                 <p>For contributing to tools that helped improve team productivity.</p>
@@ -142,14 +163,6 @@
                 <h3>Higher Secondary (ISC)</h3>
                 <p>Sri Krishna Public School | Mar 2016</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Interests Section -->
-    <section id="interests" class="section fade-in visible">
-        <div class="card">
-            <h2>Interests</h2>
-            <p>I am passionate about reading books, exploring mythology, playing the guitar, and diving deep into physics and the cosmos. I also enjoy self-improvement activities, including maintaining healthy habits. Recently, I have been working on my fitness and managing hair care with Redensyl for hair thinning and loss.</p>
         </div>
     </section>
 
@@ -226,17 +239,37 @@
         function toggleExperience(element) {
             const details = element.querySelector('.details');
             const isVisible = details.style.display === 'block';
-            
+
             // Collapse all first
             document.querySelectorAll('.experience-card .details').forEach(detail => {
                 detail.style.display = 'none';
                 detail.parentElement.classList.remove('expanded');
             });
 
-            // Expand the clicked one if not already visible
+            // Expand the clicked one with animation
             if (!isVisible) {
                 details.style.display = 'block';
                 element.classList.add('expanded');
+                details.style.maxHeight = details.scrollHeight + "px"; // Smooth expanding
+            }
+        }
+
+        // Collapsible Skills Sections
+        function toggleSkills(element) {
+            const details = element.querySelector('.details');
+            const isVisible = details.style.display === 'block';
+
+            // Collapse all first
+            document.querySelectorAll('.skill-card .details').forEach(detail => {
+                detail.style.display = 'none';
+                detail.parentElement.classList.remove('expanded');
+            });
+
+            // Expand the clicked one with animation
+            if (!isVisible) {
+                details.style.display = 'block';
+                element.classList.add('expanded');
+                details.style.maxHeight = details.scrollHeight + "px"; // Smooth expanding
             }
         }
 
